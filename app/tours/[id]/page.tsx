@@ -4,15 +4,9 @@ import { getTourDetails } from '@/utils/actions';
 import Link from 'next/link';
 import React from 'react'
 
-
-export default async function DetailPage({
-  params,
-}: {
-  params: { id: string };
-}) {
-    const { id } = params; // params are destructured here
-    const tour = await getTourDetails(id); // Fetch the tour details
-
+export default async function Page(props: { params: Promise<{ id: string }> })  {
+    const { id } = await props.params;
+    const tour = await getTourDetails(id); 
   
   
   
