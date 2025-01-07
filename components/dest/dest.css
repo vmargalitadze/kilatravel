@@ -1,0 +1,13 @@
+.dest-text{
+    margin-top: 20px;
+    font-size: 16px;
+    color: #05073C;
+    font-family: "DM Sans", sans-serif;
+    text-decoration: none;
+  }
+
+  .arr{
+    display: flex;
+    justify-content: center;
+  
+  }

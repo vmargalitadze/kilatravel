@@ -1,0 +1,14 @@
+.team_header{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+}
+
+@media screen and (max-width: 426px) {
+    .team-span {
+      display: inline-block;
+      margin: 30px !important;
+    }
+  }
+  

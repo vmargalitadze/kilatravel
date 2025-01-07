@@ -1,0 +1,74 @@
+
+datasource db {
+  provider  = "postgresql"
+  url  	    = env("DATABASE_URL")
+
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+
+model User {
+  id           String     @id @default(uuid())
+ 
+ name     String @unique
+  email    String @unique
+  password String 
+ 
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  admin        Boolean  @default(false)
+
+
+
+  bookings     Booking[]
+
+}
+
+model Tour {
+  id             String     @id @default(uuid())
+  title          String
+  description    String
+  price          Int
+  duration       Int
+  maxGuests      Int
+
+  startDate      String
+  endDate        String
+  location       String
+  image         Image[]    @relation("TourImages")
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+  bookings       Booking[]
+}
+
+model Image {
+  id       String  @id @default(uuid())
+  url      String
+  tour     Tour    @relation("TourImages", fields: [tourId], references: [id], onDelete: Cascade)
+  tourId   String
+}
+
+
+
+
+
+model Booking {
+  id             String   @id @default(uuid())
+  totalGuests    Int
+  totalPrice     Int
+
+  paymentStatus  Boolean  @default(false)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+
+  profile        User  @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  profileId      String
+
+  tour           Tour     @relation(fields: [tourId], references: [id], onDelete: Cascade)
+  tourId         String
+}
+
