@@ -9,7 +9,7 @@ export async function POST(request: Request) {
     const { message, token } = await loginUser(formData);
 
    
-    const res = NextResponse.redirect('https://kilatravel.vercel.app/');
+    const res = NextResponse.redirect('https://kilatravel.vercel.app');
     res.headers.set(
       'Set-Cookie',
       cookie.serialize('token', token, {
