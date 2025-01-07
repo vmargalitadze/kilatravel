@@ -6,7 +6,7 @@ import React from 'react'
 
 export default async function DetailPage({ params }: { params: { id: string } }) {
   
-    const { id } = await params;
+    const { id } =  params;
     const tour = await getTourDetails(id);
 
   
